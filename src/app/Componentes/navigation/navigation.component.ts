@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {AuthService} from "../../Auth/auth.service";
+import {AuthService} from "../../Services/auth.service";
 
 @Component({
   selector: 'app-navigation',
