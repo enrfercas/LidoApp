@@ -1,0 +1,18 @@
+<app-navigation></app-navigation>
+<div class="content text-center m-3">
+  <div class="row justify-content-center">
+    <div class="card col-md-10 mx-3 card shadow p-3 mb-5 bg-grey rounded">
+      <div class="card-body">
+        <h3 class="card-title"> Benvenuto al lido "Il Gabbiano"</h3>
+        <img class="card-img-top" src="\assets\photos\vista-golfo-soverato-1024x752.jpg">
+        <p class="card-text">Il Lido Il Gabbiano si trova a Soverato, sulla costa jonica del catanzarese, in Calabria.
+          La cittadina di Soverato è una località turistica estiva molto conosciuta caratterizzata da sabbia bianca e
+          fine e da acque cristalline con fondale sabbioso.
+          Presso il Lido Il Gabbiano è possibile consumare dalla colazione all'aperitivo, dalla cena al cocktail serale
+          con gli amici. Il locale è molto curato e il personale si prende cura dei clienti accompagnandoli nella scelta
+          delle numerose pietanze di pesce del menù, dai sapori particolari e decisi.</p>
+        <a *ngIf="!isLogged" class="btn btn-success" routerLink="/login">Accedi </a>
+      </div>
+    </div>
+  </div>
+</div>
