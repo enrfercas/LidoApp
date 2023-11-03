@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {CalendarService} from "../../../Services/calendar.service";
 
 @Component({
   selector: 'app-spiaggia-booking',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./spiaggia-booking.component.css']
 })
 export class SpiaggiaBookingComponent {
+  constructor(public calendar:CalendarService) {
+
+  }
+  public setStartData(){
+    this.calendar.getSelected();
+
+  }
+  public dateFromSelected(event: any){
+    console.log(event.date)
+  }
 
 }

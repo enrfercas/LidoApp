@@ -1,5 +1,17 @@
-<mat-card class="demo-inline-calendar-card">
-  <mat-calendar [(selected)]="selected"></mat-calendar>
-</mat-card>
-<p>Selected date: {{selected}}</p>
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input matInput [min]="minDate" [rangePicker]="picker">
+      <! (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"->
+      <input matStartDate placeholder="Start date" formControlName="start">
+      <input matEndDate placeholder="End date" formControlName="end">
+    </mat-date-range-input>
+    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+
+
+  <button class="btn btn-primary" (click)="onSubmit()">Select</button>
+</form>
 
