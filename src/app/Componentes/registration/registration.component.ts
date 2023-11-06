@@ -29,12 +29,14 @@ export class RegistrationComponent {
       let nuevoUser = this.formGroup.value;
       nuevoUser.id = 0
       //Controllo che ci siano utenti registrati
-
-      let savedUsers: any = JSON.parse(localStorage.getItem("user") || '{}');
+      //@ts-ignore
+      let savedUsers: string[] = JSON.parse(localStorage.getItem(("user") || '{}'));
+      console.log(savedUsers);
 
       //Se ci sono utenti
       if (savedUsers) {
-        const findUser: any = savedUsers.find((item: any) => item.registerName === nuevoUser.registerName);
+
+        const findUser: any = savedUsers.find((item:any) => item.registerName === nuevoUser.registerName);
         if (findUser) {
           alert("Già essiste questo utente");
         } else {

@@ -9,7 +9,8 @@ import {NgIf, JsonPipe} from '@angular/common';
 import {RouterLink} from "@angular/router";
 import {BrowserModule} from "@angular/platform-browser";
 import {Ombrello} from "../../../Models/ombrello";
-import {end, start} from "@popperjs/core";
+import {Rango} from "../../../Models/rango";
+
 
 @Component({
   selector: 'app-calendar',
@@ -44,7 +45,7 @@ export class CalendarComponent implements OnInit {
 
 
 
-  @Output()onChange: EventEmitter<any> = new EventEmitter();
+
 
   selected: Date | null = null;
   constructor(public calendar:CalendarService,public fb :FormBuilder) {
@@ -68,10 +69,12 @@ export class CalendarComponent implements OnInit {
     }
 
 
+
   }
   ngOnInit() {
     //Recuperamos las reservas realizadas con anterioridad y las añadimos al array que hemos construido
-    this.loadBookings()
+    this.loadBookings();
+
   }
 
   loadBookings(){
@@ -94,27 +97,29 @@ export class CalendarComponent implements OnInit {
 
   onDateChange(){
 
-    console.log('ciao', this.selected);
-    this.onChange.emit({date: this.selected});
+
   }
   onSubmit(){
     this.lista = true;
     //Llenamos el array de los puestos disponibles, recorriendo todos los elementos y comprobando si las fechas seleccionadas
     // se solapan con alguna de las fechas ya reservadas.
-    // @ts-ignore
+
+
     this.disponibili=this.ombreloni.filter((posto: any)=>{
-      this.checkAvaibility(posto.bookedDates,this.form.value);
+      this.checkAvailability(posto.bookedDates,this.form.value);
       return posto;
     });
 
     console.log("form:",this.form.value);
     console.log("disponibili:",this.disponibili);
-    console.log("this.savedBookings",this.savedBookings);
+
 
   }
   makeBooking(ombrello:Ombrello,rangeSelected:{}){
+    const startConverted = this.form.value.start;
+    const endConverted = this.form.value.end;
     // @ts-ignore
-    ombrello.bookedDates.push({start:this.form.value.start,end:this.form.value.end});
+    ombrello.bookedDates.push({start:startConverted,end:endConverted});
     console.log("ombrello",ombrello);
     let savedBookings: any = []
     if (localStorage.getItem("bookings")) {
@@ -122,19 +127,31 @@ export class CalendarComponent implements OnInit {
     }
 
     localStorage.setItem("bookings", JSON.stringify([...savedBookings, ombrello]));
-    this.loadBookings()
+    this.loadBookings();
   }
-  checkAvaibility(bookedDates:[],rangeSelected:{}): boolean{
+  checkAvailability(bookedDates:[], rangeSelected:{}): boolean{
     let disponibilidad = true;
-    bookedDates.map((rangoBooked)=>{
-      // @ts-ignore
-      if((rangeSelected.start > rangoBooked.start && rangeSelected.start < rangoBooked.end ||
-        // @ts-ignore
-        rangeSelected.end > rangoBooked.start && rangeSelected.end < rangoBooked.end)){
+    const startRange = new Date(this.form.value.start).getTime();
+    const endRange = new Date(this.form.value.end).getTime();
+    console.log("startRange:",startRange);
+    if(bookedDates.length > 0){
+      bookedDates.map((rangoBooked:any)=>{
+        console.log("rangoBooked.start",rangoBooked[0].start);
+        console.log("rangoBooked",rangoBooked[0]);
+        const startBooked =(rangoBooked[0].start).getTime();
+        console.log(typeof startBooked);
+        const endBooked = rangoBooked[0].end.valueOf();
+        console.log("startBooked:",startBooked);
 
-        disponibilidad = false;
-      }
-    });
+        if(((startRange >= startBooked) && (startRange < endBooked)) ||
+
+          ((endRange > startBooked) && (endRange <= endBooked))){
+
+          disponibilidad = false;
+        }
+      });
+    }
+
     return disponibilidad;
   }
 
