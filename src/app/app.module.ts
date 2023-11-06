@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './Componentes/navigation/navigation.component';
@@ -14,15 +13,15 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SpiaggiaBookingComponent } from './Componentes/Mare/spiaggia-booking/spiaggia-booking.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     LoginComponent,
     RegistrationComponent,
-
     HomeComponent,
-     SpiaggiaBookingComponent
+    SpiaggiaBookingComponent
   ],
   imports: [
     BrowserModule,

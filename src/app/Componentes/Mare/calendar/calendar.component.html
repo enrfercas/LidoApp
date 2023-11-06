@@ -6,7 +6,7 @@
       <input matStartDate placeholder="Start date" formControlName="start">
       <input matEndDate placeholder="End date" formControlName="end">
     </mat-date-range-input>
-    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+    <mat-hint>mm/dd/yyyy – mm/dd/yyyy</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
@@ -14,4 +14,22 @@
 
   <button class="btn btn-primary" (click)="onSubmit()">Select</button>
 </form>
+<div class="container">
+  <div class="card col-md-6 mx-3 card shadow p-3 mb-5 bg-grey rounded">
+    <div class="card-body">
+      <h3 class="card-title"> Ombreloni disponibile</h3>
+      <div class="card-text">
+        <ul>
+          <div *ngIf="disponibili">
+            <div *ngFor="let disponibile of disponibili">
+              <li>{{disponibile.id}}<button class="btn btn-primary" (click)="makeBooking(disponibile,form)">Prenota</button></li>
+            </div>
+          </div>
+
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
