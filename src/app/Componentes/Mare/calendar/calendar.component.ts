@@ -6,7 +6,7 @@ import {CalendarService} from "../../../Services/calendar.service";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormGroup, FormControl, FormsModule, ReactiveFormsModule, FormBuilder, Validators} from '@angular/forms';
 import {NgIf, JsonPipe,NgFor} from '@angular/common';
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {BrowserModule} from "@angular/platform-browser";
 import {Ombrello} from "../../../Models/ombrello";
 import {Rango} from "../../../Models/rango";
@@ -48,7 +48,7 @@ export class CalendarComponent implements OnInit {
 
 
   selected: Date | null = null;
-  constructor(public calendar:CalendarService,public fb :FormBuilder) {
+  constructor(public calendar:CalendarService,public fb :FormBuilder,public router:Router) {
     // Fecha de hoy que es la fecha mínima para reservar
     this.minDate = new Date();
     this.form = this.fb.group({
@@ -135,6 +135,8 @@ export class CalendarComponent implements OnInit {
 
     localStorage.setItem("bookings", JSON.stringify([...savedBookings, ombrello]));
     this.loadBookings();
+    this.router.navigate(['/home']);
+
   }
   checkAvailability(bookedDates:[], rangeSelected:{}): boolean{
     let disponibilidad = true;
