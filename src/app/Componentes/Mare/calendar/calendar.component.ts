@@ -106,7 +106,10 @@ export class CalendarComponent implements OnInit {
 
 
     this.disponibili=this.ombreloni.filter((posto: any)=>{
-      this.checkAvailability(posto.bookedDates,this.form.value);
+      if(this.checkAvailability(posto.bookedDates,this.form.value)){
+        return posto;
+      }
+
       //return posto;
     });
 
