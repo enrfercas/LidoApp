@@ -1,10 +1,12 @@
 <app-navigation></app-navigation>
 <div class="container justify-content-center">
   <div class="row">
-    <div class="card col-md-5 card shadow p-3 mb-1 bg-grey rounded">
-      <div class="card-body"></div>
-      <div class="card-title">Seleziona data di inizio</div>
-      <div class="card-text"><app-calendar (onChange)="dateFromSelected($event)"></app-calendar></div>
+    <div class="card col-md-10 card shadow p-3 mb-1 bg-grey rounded">
+      <div class="card-body">
+        <div class="card-title">Seleziona le date della prenotazione</div>
+        <img class="card-img-top" src="\assets\photos\lido.jpg">
+        <div class="card-text"><app-calendar (onChange)="dateFromSelected($event)"></app-calendar></div>
+      </div>
     </div>
   </div>
 </div>

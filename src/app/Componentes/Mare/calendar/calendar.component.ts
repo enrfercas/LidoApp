@@ -107,6 +107,10 @@ export class CalendarComponent implements OnInit {
 
     this.disponibili=this.ombreloni.filter((posto: any)=>{
       if(this.checkAvailability(posto.bookedDates,this.form.value)){
+        const startRange = new Date(this.form.value.start).getDate();
+        const endRange = new Date(this.form.value.end).getDate();
+        let selectedDatesRange = endRange - startRange;
+        posto.totalPrize= selectedDatesRange*posto.prize;
         return posto;
       }
 
@@ -115,6 +119,7 @@ export class CalendarComponent implements OnInit {
 
     console.log("form:",this.form.value);
     console.log("disponibili:",this.disponibili);
+
 
 
   }

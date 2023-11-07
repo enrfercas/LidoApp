@@ -10,22 +10,29 @@
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
-
-
-  <button class="btn btn-primary" (click)="onSubmit()">Select</button>
+  <button class="btn btn-primary" (click)="onSubmit()">Select</button><p>Il prezzo giornaliero dipende de la fila</p>
 </form>
+
 <div class="container">
-  <div class="card col-md-6 mx-3 card shadow p-3 mb-5 bg-grey rounded">
+  <div class="card col-md-12 mx-1 card shadow p-3 mb-5 bg-grey rounded">
     <div class="card-body">
       <h3 class="card-title"> Ombreloni disponibile</h3>
       <div class="card-text">
-        <ul>
-          <div *ngFor="let disponibile of disponibili">
-            <li>{{disponibile.id}}
-              <button class="btn btn-primary" (click)="makeBooking(disponibile,form)">Prenota</button>
-            </li>
-          </div>
-        </ul>
+        <table>
+          <tr>
+            <th>Fila</th>
+            <th>Nº Ombrello</th>
+            <th>Prezo Giornaliero</th>
+            <th>Prezo Totale</th>
+          </tr>
+          <tr *ngFor="let disponibile of disponibili">
+            <td>{{disponibile.fila}}</td>
+            <td>{{disponibile.id}}</td>
+            <td>{{disponibile.prize}}</td>
+            <td>{{disponibile.totalPrize}}</td>
+            <td><button class="btn btn-success" (click)="makeBooking(disponibile,form)">Prenota</button></td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
