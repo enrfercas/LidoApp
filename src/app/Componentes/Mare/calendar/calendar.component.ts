@@ -69,7 +69,6 @@ export class CalendarComponent implements OnInit {
     }
 
 
-
   }
   ngOnInit() {
     //Recuperamos las reservas realizadas con anterioridad y las añadimos al array que hemos construido
@@ -124,8 +123,8 @@ export class CalendarComponent implements OnInit {
 
   }
   makeBooking(ombrello:Ombrello,rangeSelected:{}){
-    const startConverted = this.form.value.start.toLocaleDateString();
-    const endConverted = this.form.value.end.toLocaleDateString();
+    const startConverted = this.form.value.start;
+    const endConverted = this.form.value.end;
     // @ts-ignore
     ombrello.bookedDates.push({start:startConverted,end:endConverted});
     console.log("ombrello",ombrello);
@@ -152,9 +151,9 @@ export class CalendarComponent implements OnInit {
         const endBooked = new Date(rangoBooked[0].end).getDate();
         console.log("startBooked:",startBooked);
 
-        if(((startRange >= startBooked) && (startRange < endBooked)) ||
+        if(((startRange >= startBooked) && (startRange <= endBooked)) ||
 
-          ((endRange > startBooked) && (endRange <= endBooked))||((startRange < startBooked) && (endRange >= endBooked))){
+          ((endRange >= startBooked) && (endRange <= endBooked))||((startRange <= startBooked) && (endRange >= endBooked))){
 
           disponibilidad = false;
         }
