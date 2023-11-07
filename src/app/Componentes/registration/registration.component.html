@@ -1,49 +1,25 @@
-<h2>Nuovo Usuario</h2>
-<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-  <div class="container">
-    <!-- Name input -->
-    <div class="form-outline mb-4">
-      <input type="text" id="registerName" class="col-4 form-control" formControlName="registerName"/>
-      <label class="col-4 form-label" for="registerName">Name</label>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <span class="h1 fw-bold mb-0"><img src="\assets\photos\Logo_gabbiano.png">Nuovo Usuario</span>
+      <div class="d-flex justify-content-center">
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+          <label class="col-4 form-label" for="registerName">Name</label>
+          <input type="text" id="registerName" class="col-4 form-control" formControlName="registerName"/>
+          <label class="col-4 form-label" for="registerUsername">Username</label>
+          <input type="text" id="registerUsername" class="col-4 form-control" formControlName="registerUsername"/>
+          <label class="col-6 form-label" for="registerEmail">Email</label>
+          <input type="email" id="registerEmail" class="col-6 form-control" formControlName="registerEmail"/>
+          <label class="form-label" for="registerPassword">Password</label>
+          <input type="password" id="registerPassword" class="form-control" formControlName="registerPassword"/>
+          <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+          <input type="password" id="registerRepeatPassword" class="form-control" formControlName="registerRepeatPassword"/>
+          <button class="btn btn-info btn-lg btn-block" type="submit">Registration</button>
+        </form>
+      </div>
     </div>
-
-    <!-- Username input -->
-    <div class="form-outline mb-4">
-      <input type="text" id="registerUsername" class="col-4 form-control" formControlName="registerUsername"/>
-      <label class="col-4 form-label" for="registerUsername">Username</label>
+    <div class="col-12 col-md-6">
+      <img src="\assets\photos\vista-golfo-soverato-1024x752.jpg">
     </div>
-
-    <!-- Email input -->
-    <div class="form-outline mb-4">
-      <input type="email" id="registerEmail" class="col-6 form-control" formControlName="registerEmail"/>
-      <label class="col-6 form-label" for="registerEmail">Email</label>
-    </div>
-
-    <!-- Password input -->
-    <div class="form-outline mb-4">
-      <input type="password" id="registerPassword" class="form-control" formControlName="registerPassword"/>
-      <label class="form-label" for="registerPassword">Password</label>
-    </div>
-
-    <!-- Repeat Password input -->
-    <div class="form-outline mb-4">
-      <input type="password" id="registerRepeatPassword" class="form-control" formControlName="registerRepeatPassword"/>
-      <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-    </div>
-
-    <!-- Checkbox -->
-    <div class="form-check d-flex justify-content-center mb-4">
-      <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
-             aria-describedby="registerCheckHelpText"/>
-      <label class="form-check-label" for="registerCheck">
-        I have read and agree to the terms
-      </label>
-    </div>
-
-    <!-- Submit button -->
-    <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
   </div>
-
-</form>
-
-
+</div>
