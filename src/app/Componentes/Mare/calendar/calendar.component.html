@@ -20,13 +20,11 @@
       <h3 class="card-title"> Ombreloni disponibile</h3>
       <div class="card-text">
         <ul>
-          <div class="container" *ngIf="disponibili">
-            <div *ngFor="let disponibile of disponibili">
-              <li>{{disponibile.id}}<button class="btn btn-primary" (click)="makeBooking(disponibile,form)">Prenota</button></li>
-            </div>
+          <div *ngFor="let disponibile of disponibili">
+            <li>{{disponibile.id}}
+              <button class="btn btn-primary" (click)="makeBooking(disponibile,form)">Prenota</button>
+            </li>
           </div>
-
-
         </ul>
       </div>
     </div>

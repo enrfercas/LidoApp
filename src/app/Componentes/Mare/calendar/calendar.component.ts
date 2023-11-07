@@ -5,7 +5,7 @@ import {MatDatepickerModule, MatDateRangePicker} from '@angular/material/datepic
 import {CalendarService} from "../../../Services/calendar.service";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormGroup, FormControl, FormsModule, ReactiveFormsModule, FormBuilder, Validators} from '@angular/forms';
-import {NgIf, JsonPipe} from '@angular/common';
+import {NgIf, JsonPipe,NgFor} from '@angular/common';
 import {RouterLink} from "@angular/router";
 import {BrowserModule} from "@angular/platform-browser";
 import {Ombrello} from "../../../Models/ombrello";
@@ -107,7 +107,7 @@ export class CalendarComponent implements OnInit {
 
     this.disponibili=this.ombreloni.filter((posto: any)=>{
       this.checkAvailability(posto.bookedDates,this.form.value);
-      return posto;
+      //return posto;
     });
 
     console.log("form:",this.form.value);
@@ -116,8 +116,8 @@ export class CalendarComponent implements OnInit {
 
   }
   makeBooking(ombrello:Ombrello,rangeSelected:{}){
-    const startConverted = this.form.value.start;
-    const endConverted = this.form.value.end;
+    const startConverted = this.form.value.start.toLocaleDateString();
+    const endConverted = this.form.value.end.toLocaleDateString();
     // @ts-ignore
     ombrello.bookedDates.push({start:startConverted,end:endConverted});
     console.log("ombrello",ombrello);
@@ -131,26 +131,28 @@ export class CalendarComponent implements OnInit {
   }
   checkAvailability(bookedDates:[], rangeSelected:{}): boolean{
     let disponibilidad = true;
-    const startRange = new Date(this.form.value.start).getTime();
-    const endRange = new Date(this.form.value.end).getTime();
+    const startRange = new Date(this.form.value.start).getDate();
+    console.log(typeof startRange);
+    const endRange = new Date(this.form.value.end).getDate();
     console.log("startRange:",startRange);
     if(bookedDates.length > 0){
       bookedDates.map((rangoBooked:any)=>{
         console.log("rangoBooked.start",rangoBooked[0].start);
         console.log("rangoBooked",rangoBooked[0]);
-        const startBooked =(rangoBooked[0].start).getTime();
+        const startBooked =new Date(rangoBooked[0].start).getDate();
         console.log(typeof startBooked);
-        const endBooked = rangoBooked[0].end.valueOf();
+        const endBooked = new Date(rangoBooked[0].end).getDate();
         console.log("startBooked:",startBooked);
 
         if(((startRange >= startBooked) && (startRange < endBooked)) ||
 
-          ((endRange > startBooked) && (endRange <= endBooked))){
+          ((endRange > startBooked) && (endRange <= endBooked))||((startRange < startBooked) && (endRange >= endBooked))){
 
           disponibilidad = false;
         }
       });
     }
+    console.log("disponibilidad",disponibilidad);
 
     return disponibilidad;
   }
