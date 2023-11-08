@@ -134,17 +134,19 @@ export class CalendarComponent implements OnInit {
   makeBooking(ombrello:Ombrello,rangeSelected:{}){
     const startConverted = this.form.value.start;
     const endConverted = this.form.value.end;
-    // @ts-ignore
-    ombrello.bookedDates.push({start:startConverted,end:endConverted});
-    console.log("ombrello",ombrello);
-    let savedBookings: any = []
-    if (localStorage.getItem("bookings")) {
-      savedBookings = JSON.parse(localStorage.getItem("bookings") || '')
-    }
+    if(ombrello.backGroundColor == '#08ff00'){
+      // @ts-ignore
+      ombrello.bookedDates.push({start:startConverted,end:endConverted});
+      console.log("ombrello",ombrello);
+      let savedBookings: any = []
+      if (localStorage.getItem("bookings")) {
+        savedBookings = JSON.parse(localStorage.getItem("bookings") || '')
+      }
 
-    localStorage.setItem("bookings", JSON.stringify([...savedBookings, ombrello]));
-    this.loadBookings();
-    this.router.navigate(['/home']);
+      localStorage.setItem("bookings", JSON.stringify([...savedBookings, ombrello]));
+      this.loadBookings();
+      this.router.navigate(['/home']);
+    }
 
   }
   checkAvailability(bookedDates:[], rangeSelected:{}): boolean{
