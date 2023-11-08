@@ -5,7 +5,7 @@ import {MatDatepickerModule, MatDateRangePicker} from '@angular/material/datepic
 import {CalendarService} from "../../../Services/calendar.service";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormGroup, FormControl, FormsModule, ReactiveFormsModule, FormBuilder, Validators} from '@angular/forms';
-import {NgIf, JsonPipe,NgFor} from '@angular/common';
+import {NgIf, JsonPipe, NgFor, NgOptimizedImage} from '@angular/common';
 import {Router, RouterLink} from "@angular/router";
 import {BrowserModule} from "@angular/platform-browser";
 import {Ombrello} from "../../../Models/ombrello";
@@ -27,7 +27,8 @@ import {Rango} from "../../../Models/rango";
     JsonPipe,
     MatNativeDateModule,
     RouterLink,
-    BrowserModule
+    BrowserModule,
+    NgOptimizedImage
   ],
 })
 export class CalendarComponent implements OnInit {
@@ -63,7 +64,8 @@ export class CalendarComponent implements OnInit {
         bookedDates:[],
         prize: 15- Math.trunc(i/10),
         fila: Math.trunc(i/10) + 1,
-        backGroundColor:'#f00'
+        backGroundColor:'#f00',
+        image:"../assets/photos/iconoRosso.png"
       }
       // @ts-ignore
       this.ombreloni.push(ombrello);
@@ -121,6 +123,7 @@ export class CalendarComponent implements OnInit {
     this.ombreloni.map((posto:any)=>{
       if(this.checkAvailability(posto.bookedDates,this.form.value)){
         posto.backGroundColor = '#08ff00';
+        posto.image = "../assets/photos/iconoVerde.png"
       }
 
     });

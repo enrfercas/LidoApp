@@ -4,5 +4,6 @@ export interface Ombrello {
   prize:number,
   fila: number,
   totalPrize:number,
-  backGroundColor: string
+  backGroundColor: string,
+  image: string
 }
