@@ -47,6 +47,7 @@ export class CalendarComponent implements OnInit {
 
 
 
+
   selected: Date | null = null;
   constructor(public calendar:CalendarService,public fb :FormBuilder,public router:Router) {
     // Fecha de hoy que es la fecha mínima para reservar
@@ -61,7 +62,8 @@ export class CalendarComponent implements OnInit {
         id: i+ 1,
         bookedDates:[],
         prize: 15- Math.trunc(i/10),
-        fila: Math.trunc(i/10) + 1
+        fila: Math.trunc(i/10) + 1,
+        backGroundColor:'#f00'
       }
       // @ts-ignore
       this.ombreloni.push(ombrello);
@@ -110,6 +112,7 @@ export class CalendarComponent implements OnInit {
         const endRange = new Date(this.form.value.end).getDate();
         let selectedDatesRange = endRange - startRange;
         posto.totalPrize= selectedDatesRange*posto.prize;
+        posto.backGroundColor = '#08ff00'
         return posto;
       }
 

@@ -3,5 +3,6 @@ export interface Ombrello {
   bookedDates:[],
   prize:number,
   fila: number,
-  totalPrize:number
+  totalPrize:number,
+  backGroundColor: string
 }
