@@ -10,6 +10,7 @@ import {Router, RouterLink} from "@angular/router";
 import {BrowserModule} from "@angular/platform-browser";
 import {Ombrello} from "../../../Models/ombrello";
 import {Rango} from "../../../Models/rango";
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -138,17 +139,35 @@ export class CalendarComponent implements OnInit {
     const startConverted = this.form.value.start;
     const endConverted = this.form.value.end;
     if(ombrello.backGroundColor == '#08ff00'){
-      // @ts-ignore
-      ombrello.bookedDates.push({start:startConverted,end:endConverted});
-      console.log("ombrello",ombrello);
-      let savedBookings: any = []
-      if (localStorage.getItem("bookings")) {
-        savedBookings = JSON.parse(localStorage.getItem("bookings") || '')
-      }
+      Swal.fire({
+        title: "Sei sicuro?",
+        text: "Non potrà tornare indietro!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si,prenota!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Fatto!",
+            text: "Il tuo ombrellone è stato prenotato",
+            icon: "success"
+          });
+          // @ts-ignore
+          ombrello.bookedDates.push({start:startConverted,end:endConverted});
+          console.log("ombrello",ombrello);
+          let savedBookings: any = []
+          if (localStorage.getItem("bookings")) {
+            savedBookings = JSON.parse(localStorage.getItem("bookings") || '')
+          }
 
-      localStorage.setItem("bookings", JSON.stringify([...savedBookings, ombrello]));
-      this.loadBookings();
-      this.router.navigate(['/home']);
+          localStorage.setItem("bookings", JSON.stringify([...savedBookings, ombrello]));
+          this.loadBookings();
+          this.router.navigate(['/home']);
+        }
+      });
+
     }
 
   }
