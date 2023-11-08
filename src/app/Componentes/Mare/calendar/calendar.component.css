@@ -9,6 +9,9 @@ table {
 }
 .icono {
   max-width: 90%;
-
+}
+.orilla{
+  height: 15vh;
+  width: 100%;
 }
 

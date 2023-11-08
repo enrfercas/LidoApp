@@ -18,7 +18,7 @@
     <div class="card-body">
       <h3 class="card-title"> Ombreloni disponibile</h3>
       <div class="card-text">
-        <table>
+        <!--<table>
           <tr>
             <th>Fila</th>
             <th>Nº Ombrello</th>
@@ -32,8 +32,13 @@
             <td>{{disponibile.totalPrize}}</td>
             <td><button class="btn btn-success" (click)="makeBooking(disponibile,form)">Prenota</button></td>
           </tr>
-        </table>
+        </table> -->
         <div class="container-fluid p-1">
+          <div class="row p-1">
+            <div class="col-10">
+              <img class="orilla" src="assets\photos\mar.webp">
+            </div>
+          </div>
           <div class="row p-1">
             <div class="col-1" [ngStyle]="{'background-color':ombreloni[0].backGroundColor}">
               <img class="icono" src="\assets\photos\icono.png" (click)="makeBooking(ombreloni[0],form)">
