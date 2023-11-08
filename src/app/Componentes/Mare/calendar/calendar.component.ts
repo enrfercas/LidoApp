@@ -119,7 +119,7 @@ export class CalendarComponent implements OnInit {
         return posto;
       }
 
-      //return posto;
+
     });
     this.ombreloni.map((posto:any)=>{
       if(this.checkAvailability(posto.bookedDates,this.form.value)){
