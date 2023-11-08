@@ -112,11 +112,17 @@ export class CalendarComponent implements OnInit {
         const endRange = new Date(this.form.value.end).getDate();
         let selectedDatesRange = endRange - startRange;
         posto.totalPrize= selectedDatesRange*posto.prize;
-        posto.backGroundColor = '#08ff00'
+
         return posto;
       }
 
       //return posto;
+    });
+    this.ombreloni.map((posto:any)=>{
+      if(this.checkAvailability(posto.bookedDates,this.form.value)){
+        posto.backGroundColor = '#08ff00';
+      }
+
     });
 
     console.log("form:",this.form.value);
