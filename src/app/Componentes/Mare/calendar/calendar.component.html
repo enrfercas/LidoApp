@@ -1,22 +1,24 @@
-<form [formGroup]="form">
-  <mat-form-field>
-    <mat-label>Enter a date range</mat-label>
-    <mat-date-range-input matInput [min]="minDate" [rangePicker]="picker">
-      <! (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"->
-      <input matStartDate placeholder="Start date" formControlName="start">
-      <input matEndDate placeholder="End date" formControlName="end">
-    </mat-date-range-input>
-    <mat-hint>mm/dd/yyyy – mm/dd/yyyy</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
-  </mat-form-field>
-  <button class="btn btn-primary" (click)="onSubmit()">Select</button><p>Il prezzo giornaliero dipende de la fila</p>
-</form>
+
 
 <div class="container-fluid">
   <div class="card col-md-12 mx-1 card shadow p-3 mb-5 bg-grey rounded">
     <div class="card-body">
-      <h3 class="card-title"> Ombreloni disponibile</h3>
+      <form [formGroup]="form">
+        <div class="container-fluid col-9">
+          <mat-form-field>
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input matInput [min]="minDate" [rangePicker]="picker">
+              <input matStartDate placeholder="Start date" formControlName="start">
+              <input matEndDate placeholder="End date" formControlName="end">
+            </mat-date-range-input>
+            <mat-hint>mm/dd/yyyy – mm/dd/yyyy</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+          <button class="btn btn-primary" (click)="onSubmit()">Select</button><p class="p-3">Il prezzo giornaliero dipende della fila</p>
+        </div>
+      </form>
+      <h2 class="card-title p-3"> Ombreloni disponibile</h2>
       <div class="card-text">
         <!--<table>
           <tr>
