@@ -1,9 +1,14 @@
 export interface Ombrello {
   id:number,
-  bookedDates:[],
+  bookedDates:BookDates[],
   prize:number,
   fila: number,
   totalPrize:number,
   backGroundColor: string,
   image: string
+}
+
+export interface BookDates {
+  start: string,
+  end: string
 }

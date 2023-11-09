@@ -18,3 +18,31 @@ table {
 mat-form-field{
   width:90%;
 }
+.modale{
+  position: fixed;
+  width: 20rem;
+  height: 20rem;
+  background-color: antiquewhite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  display: none;
+  opacity: 0;
+}
+.modaleaperta{
+  display: block;
+  opacity: 1;
+}
+.modalHeader{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 5px;
+}
+h2 {
+  margin: auto;
+}
+.crossButton{
+  justify-items: end;
+}

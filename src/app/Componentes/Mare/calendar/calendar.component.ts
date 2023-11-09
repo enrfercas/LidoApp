@@ -10,7 +10,10 @@ import {Router, RouterLink} from "@angular/router";
 import {BrowserModule} from "@angular/platform-browser";
 import {Ombrello} from "../../../Models/ombrello";
 import {Rango} from "../../../Models/rango";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import {ViewChild, ElementRef} from '@angular/core';
+
+
 
 
 @Component({
@@ -42,6 +45,15 @@ export class CalendarComponent implements OnInit {
   public lista: boolean= false;
   public savedBookings: any[]=[];
   public disponibili :Ombrello[]=[];
+  public prenotato: Ombrello ={
+    id:0,
+    bookedDates:[],
+    prize:0,
+    fila:0,
+    totalPrize:0,
+    backGroundColor:"",
+    image:""
+  };
 
 
 
@@ -91,7 +103,7 @@ export class CalendarComponent implements OnInit {
 
     this.savedBookings = savedBookings.map((ombrello: any)=>{
       if(ombrello.id === this.ombreloni[ombrello.id-1].id && ombrello.bookedDates){
-        //@ts-ignore
+
         this.ombreloni[ombrello.id-1].bookedDates.push(ombrello.bookedDates);
 
         console.log("ombreloni con las savedBookings:",this.ombreloni);
@@ -154,7 +166,7 @@ export class CalendarComponent implements OnInit {
             text: "Il tuo ombrellone è stato prenotato",
             icon: "success"
           });
-          // @ts-ignore
+
           ombrello.bookedDates.push({start:startConverted,end:endConverted});
           console.log("ombrello",ombrello);
           let savedBookings: any = []
@@ -164,7 +176,9 @@ export class CalendarComponent implements OnInit {
 
           localStorage.setItem("bookings", JSON.stringify([...savedBookings, ombrello]));
           this.loadBookings();
-          this.router.navigate(['/home']);
+          this.prenotato = ombrello;
+          this.apriModale();
+          this.router.navigate(['/calendar']);
         }
       });
 
@@ -197,6 +211,15 @@ export class CalendarComponent implements OnInit {
     console.log("disponibilidad",disponibilidad);
 
     return disponibilidad;
+  }
+  public apriModale(){
+
+    const modale:any = document.getElementById('modale');
+    modale.classList.add('modaleaperta');
+  }
+  public chiudiModale(){
+    const modale:any = document.getElementById('modale');
+    modale.classList.remove('modaleaperta');
   }
 
 }
