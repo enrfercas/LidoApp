@@ -161,11 +161,7 @@ export class CalendarComponent implements OnInit {
         confirmButtonText: "Si,prenota!"
       }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire({
-            title: "Fatto!",
-            text: "Il tuo ombrellone è stato prenotato",
-            icon: "success"
-          });
+
 
           ombrello.bookedDates.push({start:startConverted,end:endConverted});
           console.log("ombrello",ombrello);
@@ -178,9 +174,11 @@ export class CalendarComponent implements OnInit {
           this.loadBookings();
           this.prenotato = ombrello;
           this.apriModale();
-          this.router.navigate(['/calendar']);
+
         }
+
       });
+
 
     }
 
@@ -220,6 +218,11 @@ export class CalendarComponent implements OnInit {
   public chiudiModale(){
     const modale:any = document.getElementById('modale');
     modale.classList.remove('modaleaperta');
+    Swal.fire({
+      title: "Fatto!",
+      text: "Il tuo ombrellone è stato prenotato",
+      icon: "success"
+    });
   }
 
 }
