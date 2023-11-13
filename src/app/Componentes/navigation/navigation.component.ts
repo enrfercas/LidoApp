@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../Services/auth.service";
 
@@ -7,17 +7,20 @@ import {AuthService} from "../../Services/auth.service";
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
 })
-export class NavigationComponent {
-  public isLogged: boolean;
+export class NavigationComponent implements OnInit {
+  public isLogged: boolean =false;
 
   constructor(public route: ActivatedRoute,public auth:AuthService,public router:Router) {
-
     this.route.queryParams
-       .subscribe((params) => {
-         this.isLogged = params['isLogged'];
+      .subscribe((params) => {
+        this.isLogged = params['isLogged'];
       });
-    this.isLogged = this.auth.getIsLogged();
   }
+ngOnInit() {
+
+  this.isLogged = this.auth.getIsLogged();
+}
+
   public logOut(){
     this.auth.setIsLogged(false);
     this.router.navigate(['/login']);
