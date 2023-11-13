@@ -1,12 +1,4 @@
-th, td {
-  padding-top: 10px;
-  padding-bottom: 20px;
-  padding-left: 30px;
-  padding-right: 40px;
-}
-table {
-  border-spacing: 30px;
-}
+
 .icono {
   max-width: 90%;
 }
@@ -22,7 +14,7 @@ mat-form-field{
   position: fixed;
   width: 20rem;
   height: 20rem;
-  background-color: antiquewhite;
+  background-color: #9fb4b4;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -45,4 +37,26 @@ h2 {
 }
 .crossButton{
   justify-items: end;
+}
+#grid{
+  display: none;
+}
+#table{
+  display: none;
+}
+@media (max-width: 560px) {
+  #table{
+    display: flex;
+  }
+}
+@media (min-width: 561px) {
+  #grid{
+    display: block;
+  }
+}
+.fila{
+  margin-bottom: 15px;
+}
+.dateInput{
+  width: 100%;
 }

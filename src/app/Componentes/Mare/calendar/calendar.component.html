@@ -1,15 +1,15 @@
 <div class="container-fluid">
-  <div class="card col-md-12 mx-1 card shadow p-3 mb-5 bg-grey rounded">
-    <div class="card-body">
+  <div class="card col-md-12 card shadow p-3 mb-5 bg-grey rounded">
+    <div class="card-body p-0">
       <form [formGroup]="form">
         <div class="container-fluid col-9">
-          <mat-form-field>
+          <mat-form-field class="dateInput">
             <mat-label>Enter a date range</mat-label>
             <mat-date-range-input matInput [min]="minDate" [rangePicker]="picker">
               <input matStartDate placeholder="Start date" formControlName="start">
               <input matEndDate placeholder="End date" formControlName="end">
             </mat-date-range-input>
-            <mat-hint>mm/dd/yyyy – mm/dd/yyyy</mat-hint>
+
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-date-range-picker #picker></mat-date-range-picker>
           </mat-form-field>
@@ -19,168 +19,185 @@
       </form>
       <h2 class="card-title p-3"> Ombreloni disponibile</h2>
       <div class="card-text">
-        <!--<table>
-          <tr>
-            <th>Fila</th>
-            <th>Nº Ombrello</th>
-            <th>Prezo Giornaliero</th>
-            <th>Prezo Totale</th>
-          </tr>
-          <tr *ngFor="let disponibile of disponibili">
-            <td>{{disponibile.fila}}</td>
-            <td>{{disponibile.id}}</td>
-            <td>{{disponibile.prize}}</td>
-            <td>{{disponibile.totalPrize}}</td>
-            <td><button class="btn btn-success" (click)="makeBooking(disponibile,form)">Prenota</button></td>
-          </tr>
-        </table> -->
-        <div class="container-fluid p-1">
+
+        <div id="grid" class="container-fluid p-1">
           <div class="row p-1">
-            <div class="col-10">
+            <div class="col md-10">
               <img class="orilla" src="assets\photos\mar.webp">
             </div>
           </div>
           <div class="row p-1">
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[0].image" (click)="makeBooking(ombreloni[0],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[1].image" (click)="makeBooking(ombreloni[1],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[2].image" (click)="makeBooking(ombreloni[2],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[3].image" (click)="makeBooking(ombreloni[3],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[4].image" (click)="makeBooking(ombreloni[4],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[5].image" (click)="makeBooking(ombreloni[5],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[6].image" (click)="makeBooking(ombreloni[6],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[7].image" (click)="makeBooking(ombreloni[7],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[8].image" (click)="makeBooking(ombreloni[8],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[9].image" (click)="makeBooking(ombreloni[9],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <p>Prezzo totale:{{ombreloni[9].totalPrize}}</p>
             </div>
           </div>
           <div class="row p-1">
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[10].image" (click)="makeBooking(ombreloni[10],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[11].image" (click)="makeBooking(ombreloni[11],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[12].image" (click)="makeBooking(ombreloni[12],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[13].image" (click)="makeBooking(ombreloni[13],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[14].image" (click)="makeBooking(ombreloni[14],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[15].image" (click)="makeBooking(ombreloni[15],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[16].image" (click)="makeBooking(ombreloni[16],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[17].image" (click)="makeBooking(ombreloni[17],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[18].image" (click)="makeBooking(ombreloni[18],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[19].image" (click)="makeBooking(ombreloni[19],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <p>Prezzo totale:{{ombreloni[19].totalPrize}}</p>
             </div>
           </div>
           <div class="row p-1">
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[20].image" (click)="makeBooking(ombreloni[20],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[21].image" (click)="makeBooking(ombreloni[21],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[22].image" (click)="makeBooking(ombreloni[22],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[23].image" (click)="makeBooking(ombreloni[23],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[24].image" (click)="makeBooking(ombreloni[24],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[25].image" (click)="makeBooking(ombreloni[25],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[26].image" (click)="makeBooking(ombreloni[26],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[27].image" (click)="makeBooking(ombreloni[27],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[28].image" (click)="makeBooking(ombreloni[28],form)">
             </div>
             <div class="col-1">
               <img class="icono" [src]="ombreloni[29].image" (click)="makeBooking(ombreloni[29],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <p>Prezzo totale:{{ombreloni[29].totalPrize}}</p>
             </div>
           </div>
           <div class="row p-1">
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[30].image" (click)="makeBooking(ombreloni[30],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[31].image" (click)="makeBooking(ombreloni[31],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[32].image" (click)="makeBooking(ombreloni[32],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[33].image" (click)="makeBooking(ombreloni[33],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[34].image" (click)="makeBooking(ombreloni[34],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[35].image" (click)="makeBooking(ombreloni[35],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[36].image" (click)="makeBooking(ombreloni[36],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[37].image" (click)="makeBooking(ombreloni[37],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[38].image" (click)="makeBooking(ombreloni[38],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <img class="icono" [src]="ombreloni[39].image" (click)="makeBooking(ombreloni[39],form)">
             </div>
-            <div class="col-1">
+            <div class="col md-1">
               <p>Prezzo totale:{{ombreloni[39].totalPrize}}</p>
             </div>
           </div>
         </div>
+      </div>
+      <div id="table" class="container-fluid">
+        <div class="row">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+              Seleziona Fila
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li><button class="dropdown-item" type="button" (click)="setFila(1)">Fila 1</button></li>
+              <li><button class="dropdown-item" type="button" (click)="setFila(2)">Fila 2</button></li>
+              <li><button class="dropdown-item" type="button" (click)="setFila(3)">Fila 3</button></li>
+              <li><button class="dropdown-item" type="button" (click)="setFila(4)">Fila 4</button></li>
+            </ul>
+          </div>
+          <div class="col-12">
+            <table>
+              <tr>
+                <th>Nº Ombrello</th>
+                <th>Prezo Giornaliero</th>
+                <th>Prezo Totale</th>
+              </tr>
+              <tr class="fila" *ngFor="let disponibile of disponibiliInFila">
+                <td>{{disponibile.id}}</td>
+                <td>{{disponibile.prize}}</td>
+                <td>{{disponibile.totalPrize}}</td>
+                <td><button class="btn btn-success" (click)="makeBooking(disponibile,form)">Prenota</button></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -195,13 +212,13 @@
       </span>
     </div>
     <div class="body">
-      <p>Siamo lieti di annunciare che abbiamo ricevuto con successo la vostra prenotazione. Di seguito trovate i dettagli della vostra prenotazione:</p>
+      <p>Siamo lieti di annunciare che abbiamo ricevuto con successo il vostro ordine. Di seguito trovate i dettagli della vostra prenotazione:</p>
       <ul>
         <li>Il suo posto è il numero: {{prenotato.id}}</li>
         <li>Situato nella fila numero:{{prenotato.fila}}</li>
         <li>Il prezzo giornaliero è di:{{prenotato.prize}}</li>
         <li>Prezzo totale:{{prenotato.totalPrize}}</li>
-        <li>Para su reserva del {{form.value}}</li>
+        <li>Para su reserva del {{form.value.start|date:'dd-MM-YYYY' }} al {{form.value.end|date:'dd-MM-YYYY'}}</li>
       </ul>
     </div>
   </div>

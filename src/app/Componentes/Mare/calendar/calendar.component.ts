@@ -12,6 +12,7 @@ import {Ombrello} from "../../../Models/ombrello";
 import {Rango} from "../../../Models/rango";
 import Swal from 'sweetalert2';
 import {ViewChild, ElementRef} from '@angular/core';
+import {window} from "rxjs";
 
 
 
@@ -45,6 +46,8 @@ export class CalendarComponent implements OnInit {
   public lista: boolean= false;
   public savedBookings: any[]=[];
   public disponibili :Ombrello[]=[];
+  public disponibiliInFila:Ombrello[]=[];
+  public fila:number=1;
   public prenotato: Ombrello ={
     id:0,
     bookedDates:[],
@@ -131,8 +134,8 @@ export class CalendarComponent implements OnInit {
         return posto;
       }
 
-
     });
+    console.log(this.disponibili);
     this.ombreloni.map((posto:any)=>{
       if(this.checkAvailability(posto.bookedDates,this.form.value)){
         posto.backGroundColor = '#08ff00';
@@ -144,7 +147,7 @@ export class CalendarComponent implements OnInit {
     console.log("form:",this.form.value);
     console.log("disponibili:",this.disponibili);
 
-
+    console.log("disponibiliInFila:",this.disponibiliInFila);
 
   }
   makeBooking(ombrello:Ombrello,rangeSelected:{}){
@@ -224,5 +227,16 @@ export class CalendarComponent implements OnInit {
       icon: "success"
     });
   }
+  public setFila(fila:number){
+    this.fila= fila;
+    this.disponibiliInFila=  this.disponibili.filter((posto:any)=>{
+      if(posto.fila === this.fila){
+        return posto;
+      }
+    });
+  }
 
+
+  protected readonly document = document;
+  protected readonly window = window;
 }
