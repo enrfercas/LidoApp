@@ -46,7 +46,15 @@ h2 {
 }
 @media (max-width: 560px) {
   #table{
-    display: flex;
+    display: block;
+  }
+
+  table{
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+  }
+  .fila{
+    margin-bottom: 50px;
   }
 }
 @media (min-width: 561px) {
@@ -54,9 +62,7 @@ h2 {
     display: block;
   }
 }
-.fila{
-  margin-bottom: 15px;
-}
+
 .dateInput{
   width: 100%;
 }
