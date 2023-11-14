@@ -1,0 +1,76 @@
+.header-restaurant{
+  display:flex;
+  flex-direction:column;
+  margin-bottom: 2rem;
+}
+#restaurant-name{
+  margin-left: auto;
+  margin-right: auto;
+}
+#descripzione{
+  margin-left:auto;
+  margin-right:auto;
+}
+.carousel-container{
+  display:flex;
+  height: 30vh;
+  justify-content:center;
+}
+.titulo-container{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+#carousel{
+  width: 95%;
+}
+.menu-container{
+  display: flex;
+  flex-wrap:wrap;
+  width: 50%;
+  gap: 3rem;
+}
+.info-container{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 50%;
+}
+.contenedor{
+  display:flex;
+  width: 95%;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+.all-container{
+  min-height:100vh;
+  background-color:sandybrown;
+}
+.booking-container{
+  display: flex;
+  justify-content: center;
+}
+.title-container{
+  display: flex;
+  justify-content: center;
+}
+#date-input{
+  width: 20rem;
+}
+.count-button{
+  height: 2rem;
+  width: 2rem;
+  border-radius: 5px;
+  background-color: #156db4;
+  border: 1px solid #fff;
+  color: #fff;
+  margin: 0 0.5rem;
+  box-shadow: 0 .5rem 2rem rgba(0, 0, 0, 0.7);
+}
+.count-number{
+  max-width:2rem;
+  max-height: 2rem;
+  border-radius: 5px;
+  border: 3px solid #156db4;
+}

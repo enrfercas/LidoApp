@@ -1,0 +1,69 @@
+<app-navigation></app-navigation>
+<div class="all-container">
+  <header class="header-restaurant">
+    <h1 id="restaurant-name">Beervante</h1>
+    <p id="descripzione">Una piccola descripzione</p>
+  </header>
+  <main>
+  <div class="carousel-container">
+    <img id="carousel" src="\assets\photos\mar.webp">
+  </div>
+  <div class="titulo-container">
+    <h2>Menu</h2>
+    <h2>Informazione</h2>
+  </div>
+  <div class="contenedor">
+    <div class="menu-container">
+      <ul class="lista1-container">
+        <li>Margherita:pomodoro,basilico,formaggio</li>
+        <li>Nduja:pomodoro,basilico,formaggio</li>
+        <li>Alice:pomodoro,basilico,formaggio</li>
+        <li>Panceta e Whisky:pomodoro,basilico,formaggio</li>
+        <li>Lardo e Nduja:pomodoro,basilico,formaggio</li>
+        <li>pizza6:pomodoro,basilico,formaggio</li>
+        <li>pizza7:pomodoro,basilico,formaggio</li>
+        <li>pizza8:pomodoro,basilico,formaggio</li>
+        <li>pizza9:pomodoro,basilico,formaggio</li>
+        <li>pizza10:pomodoro,basilico,formaggio</li>
+      </ul>
+      <ul class="lista2-container">
+        <li>Margherita:pomodoro,basilico,formaggio</li>
+        <li>Nduja:pomodoro,basilico,formaggio</li>
+        <li>Alice:pomodoro,basilico,formaggio</li>
+        <li>Panceta e Whisky:pomodoro,basilico,formaggio</li>
+        <li>Lardo e Nduja:pomodoro,basilico,formaggio</li>
+        <li>pizza6:pomodoro,basilico,formaggio</li>
+        <li>pizza7:pomodoro,basilico,formaggio</li>
+        <li>pizza8:pomodoro,basilico,formaggio</li>
+        <li>pizza9:pomodoro,basilico,formaggio</li>
+        <li>pizza10:pomodoro,basilico,formaggio</li>
+      </ul>
+    </div>
+    <div class="info-container">
+      <p>Beervante garantisce ai celiaci cibi sicuri e genuini. Dalle pizze con impasto gluten free al pane, dai differenti tipi di pasta ai dolci al cucchiaio, è sufficiente prenotare specificando le vostre necessità e richiedendo un menu ad hoc: saremo in grado di cucinare un pasto completo e genuino.
+
+        Beervante è un Ristorante con specialità di pesce e pizza tradizionale napoletana con un occhio di riguardo alle esigenze di celiaci e altre intolleranze alimentari. Si trova a Torino in zona Sassi, non lontano dal centro città, con ampia disponibilità di parcheggio, ideale per coppie, famiglie e gruppi numerosi.
+        L’Ambiente è accogliente, ampio e climatizzato. Il servizio è attento, cortese e puntale. A disposizione dei piccoli ospiti, un'accogliente area giochi.
+        La pizza è quella della migliore tradizione napoletana grazie alla freschezza e alla qualità degli ingredienti per la farcitura, la lenta lievitazione dell'impasto e la cottura ad hoc in forno a legna.
+
+        Alla base dei piatti di mare, il pescato più fresco che arriva quotidianamente dai migliori mercati, per garantire la qualità oltre ai sapori che la tradizione gastronomica italiana e la passione dei suoi chef sanno infondere in ogni piatto.</p>
+    </div>
+  </div>
+  <div class="title-container">
+    <h2>Prenota un tavolo</h2>
+  </div>
+  <div class="booking-container">
+    <form>
+      <label>Introduci il numero di persone</label>
+      <button class="count-button" type="button" (click)="count(false)">-</button>
+      <input class="count-number" value={{numPerson}} type="number" max="6" min="0" formControlName="numPersons">
+      <button class="count-button" type="button" (click)="count(true)">+</button>
+      <input id="date-input" placeholder="Enter a date" matInput [matDatepicker]="picker" formControlName="date">
+      <mat-datepicker-toggle id="toggle-icon" matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <button class="btn btn-success" type="submit" (click)="onSubmit()">Cerca un tavolo</button>
+    </form>
+
+  </div>
+  </main>
+</div>

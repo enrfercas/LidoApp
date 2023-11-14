@@ -12,6 +12,12 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SpiaggiaBookingComponent } from './Componentes/Mare/spiaggia-booking/spiaggia-booking.component';
+import { RestaurantComponent } from './Componentes/restaurantBooking/restaurant/restaurant.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {RouterLink} from "@angular/router";
+
 
 
 @NgModule({
@@ -21,17 +27,30 @@ import { SpiaggiaBookingComponent } from './Componentes/Mare/spiaggia-booking/sp
     LoginComponent,
     RegistrationComponent,
     HomeComponent,
-    SpiaggiaBookingComponent
+    SpiaggiaBookingComponent,
+    RestaurantComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    CalendarModule.forRoot({provide: DateAdapter, useFactory: adapterFactory}),
     BrowserAnimationsModule,
     CalendarComponent,
+
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    RouterLink,
+    ReactiveFormsModule,
+
   ],
   providers: [],
+  exports: [
+    NavigationComponent,
+    NavigationComponent,
+    NavigationComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
