@@ -53,7 +53,7 @@
     <h2>Prenota un tavolo</h2>
   </div>
   <div class="booking-container">
-    <form>
+    <form [formGroup]="form">
       <label>Introduci il numero di persone</label>
       <button class="count-button" type="button" (click)="count(false)">-</button>
       <input class="count-number" value={{numPerson}} type="number" max="6" min="0" formControlName="numPersons">

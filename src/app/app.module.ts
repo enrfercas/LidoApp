@@ -17,6 +17,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {RouterLink} from "@angular/router";
+import {MatInputModule} from "@angular/material/input";
 
 
 
@@ -43,6 +44,7 @@ import {RouterLink} from "@angular/router";
     MatNativeDateModule,
     RouterLink,
     ReactiveFormsModule,
+    MatInputModule,
 
   ],
   providers: [],
