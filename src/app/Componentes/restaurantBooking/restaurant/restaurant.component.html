@@ -14,7 +14,7 @@
   </div>
   <div class="contenedor">
     <div class="menu-container">
-      <ul class="lista1-container">
+      <ul class="lista-container">
         <li>Margherita:pomodoro,basilico,formaggio</li>
         <li>Nduja:pomodoro,basilico,formaggio</li>
         <li>Alice:pomodoro,basilico,formaggio</li>
@@ -26,7 +26,7 @@
         <li>pizza9:pomodoro,basilico,formaggio</li>
         <li>pizza10:pomodoro,basilico,formaggio</li>
       </ul>
-      <ul class="lista2-container">
+      <ul class="lista-container">
         <li>Margherita:pomodoro,basilico,formaggio</li>
         <li>Nduja:pomodoro,basilico,formaggio</li>
         <li>Alice:pomodoro,basilico,formaggio</li>
@@ -56,12 +56,18 @@
     <form [formGroup]="form">
       <label>Introduci il numero di persone</label>
       <button class="count-button" type="button" (click)="count(false)">-</button>
-      <input class="count-number" value={{numPerson}} type="number" max="6" min="0" formControlName="numPersons">
+      <input class="count-number" value={{numPersons}} type="number" max="6" min="0" formControlName="numPerson">
       <button class="count-button" type="button" (click)="count(true)">+</button>
-      <input id="date-input" placeholder="Enter a date" matInput [matDatepicker]="picker" formControlName="date">
-      <mat-datepicker-toggle id="toggle-icon" matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-      <button class="btn btn-success" type="submit" (click)="onSubmit()">Cerca un tavolo</button>
+      <mat-form-field class="example-full-width">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [min]="minDate" id="date-input" formControlName="date">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker">
+
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    <button class="btn btn-success" type="submit" (click)="onSubmit()">Richiedi una prenotazione</button>
     </form>
 
   </div>
